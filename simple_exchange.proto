@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package simpleexchange;
+
+message SimpleExample {
+  int32 id = 1;
+  string text = 2;
+}
