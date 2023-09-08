@@ -19,6 +19,12 @@ find_package(Protobuf CONFIG REQUIRED)
 message(STATUS "Using protobuf ${Protobuf_VERSION}")
 
 
+#wolfssl
+find_library(WOLFSSL_LIB 
+  NAME wolfssl
+  HINTS ${INCLUDE_DIRECTORIES}
+  REQUIRED)
+
 #libhttpserver
 find_library(HTTPSERVER_LIB
   NAMES httpserver
@@ -66,6 +72,7 @@ foreach(_target
     ${_PROTOBUF_LIBPROTOBUF}
     ${HTTPSERVER_LIB}
     ${CURLPP_LDFLAGS}
+    ${WOLFSSL_LIB}
     )
 endforeach()
 
