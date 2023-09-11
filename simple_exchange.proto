@@ -6,3 +6,8 @@ message SimpleExample {
   int32 id = 1;
   string text = 2;
 }
+
+message ResponseProto {
+  bytes encrypted_payload = 1;
+  uint64 key_number = 2;
+}

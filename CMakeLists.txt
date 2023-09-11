@@ -1,9 +1,16 @@
 cmake_minimum_required(VERSION 3.22)
-project(PBUFHTTP CXX)
+project(PBUFHTTP C CXX)
 
 #Including usage of external content
 include(FetchContent)
 include(FindPkgConfig)
+
+set(CMAKE_BUILD_TYPE RelWithDebInfo)
+
+#pthreads
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
 #########
 set(_PROTOBUF_PROTOC $<TARGET_FILE:protobuf::protoc>)
 set(_GRPC_GRPCPP gRPC::grpc++)
@@ -73,6 +80,6 @@ foreach(_target
     ${HTTPSERVER_LIB}
     ${CURLPP_LDFLAGS}
     ${WOLFSSL_LIB}
-    )
+    Threads::Threads)
 endforeach()
 
